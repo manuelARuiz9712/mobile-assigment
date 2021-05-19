@@ -16,15 +16,15 @@ const CardPerson: React.FC<CardPersonProps> = (props) => {
 
 
     return (
-        <TouchableOpacity onPress={ props.goToDetail}  style={CardPersonStyles.CardContainer}  >
+        <View  style={CardPersonStyles.CardContainer}  >
 
-            <View style={CardPersonStyles.CardTitleContainer} >
+            <TouchableOpacity onPress={ props.goToDetail}  style={CardPersonStyles.CardTitleContainer} >
                 <Text style={CardPersonStyles.CardTitle} >{props.name}  </Text>
-            </View>
+            </TouchableOpacity>
             
-            <View style={CardPersonStyles.ImageContainer}  >
+            <TouchableOpacity onPress={ props.goToDetail}   style={CardPersonStyles.ImageContainer}  >
                 <Image source={{ uri: props.image }} style={CardPersonStyles.CardImage} />
-            </View>
+            </TouchableOpacity>
 
             <View style={CardPersonStyles.RowInfoContent} >
                 <View style={CardPersonStyles.RowColSub}  >
@@ -48,7 +48,7 @@ const CardPerson: React.FC<CardPersonProps> = (props) => {
 
             </View>
 
-        </TouchableOpacity>
+        </View>
     )
 
 
