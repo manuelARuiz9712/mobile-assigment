@@ -6,5 +6,5 @@ export interface Person{
     gender:string,
     created:string,
     species:string,
- 
+    status:string
 }

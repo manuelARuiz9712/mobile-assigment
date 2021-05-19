@@ -11,6 +11,7 @@ export default StyleSheet.create({
       //  flex:1,
         backgroundColor:theme.bodyColor,
         minHeight:ScreenSize.h,
+        
     },
     CardContainer:{
         borderBottomLeftRadius:10,
@@ -22,7 +23,7 @@ export default StyleSheet.create({
 
     },
     ImageContainer:{
-        marginTop:-25
+       
     },
     ImageCard:{
         resizeMode:"contain",

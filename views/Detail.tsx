@@ -8,7 +8,8 @@ import {useRoute} from "@react-navigation/native";
 const DetailPerson: React.FC = (props)=>{
 
     let router = useRoute();
-     let PersonData = router.params as Person;
+    let PersonData = router.params as Person ;
+     
 
 
     return (
@@ -26,7 +27,7 @@ const DetailPerson: React.FC = (props)=>{
                 <View style={DetailPersonStyles.InfoContainer} >
 
                     <View >
-                        <Text style={DetailPersonStyles.TitleInfo} >Nombre del personaje</Text>
+                        <Text style={DetailPersonStyles.TitleInfo} >{PersonData.name}</Text>
                     </View>
 
                     <View style={DetailPersonStyles.RowInfo} >
@@ -35,7 +36,7 @@ const DetailPerson: React.FC = (props)=>{
                             <Text style={DetailPersonStyles.Subtitle} >Origin:</Text>
                         </View>
                         <View style={DetailPersonStyles.ColDesc} >
-                        <Text style={DetailPersonStyles.Descripcion} >Descripcion</Text>
+                        <Text style={DetailPersonStyles.Descripcion} >{PersonData.origin.name}</Text>
                         </View>
 
                     </View>
@@ -45,7 +46,7 @@ const DetailPerson: React.FC = (props)=>{
                             <Text style={DetailPersonStyles.Subtitle} > Status:</Text>
                         </View>
                         <View style={DetailPersonStyles.ColDesc} >
-                        <Text style={DetailPersonStyles.Descripcion} >Descripcion</Text>
+                        <Text style={DetailPersonStyles.Descripcion} >{PersonData.status}</Text>
                         </View>
 
                     </View>
@@ -55,7 +56,7 @@ const DetailPerson: React.FC = (props)=>{
                             <Text style={DetailPersonStyles.Subtitle} >Species:</Text>
                         </View>
                         <View style={DetailPersonStyles.ColDesc} >
-                        <Text style={DetailPersonStyles.Descripcion} >Descripcion</Text>
+                        <Text style={DetailPersonStyles.Descripcion} >{PersonData.species}</Text>
                         </View>
 
                     </View>
@@ -65,7 +66,7 @@ const DetailPerson: React.FC = (props)=>{
                             <Text style={DetailPersonStyles.Subtitle} >Gender:</Text>
                         </View>
                         <View style={DetailPersonStyles.ColDesc} >
-                        <Text style={DetailPersonStyles.Descripcion} >Descripcion</Text>
+                        <Text style={DetailPersonStyles.Descripcion} >{PersonData.gender}</Text>
                         </View>
 
                     </View>
@@ -75,7 +76,7 @@ const DetailPerson: React.FC = (props)=>{
                             <Text style={DetailPersonStyles.Subtitle} >Created:</Text>
                         </View>
                         <View style={DetailPersonStyles.ColDesc} >
-                        <Text style={DetailPersonStyles.Descripcion} >Descripcion</Text>
+                        <Text style={DetailPersonStyles.Descripcion} >{PersonData.created}</Text>
                         </View>
 
                     </View>

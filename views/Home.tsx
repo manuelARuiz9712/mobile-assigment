@@ -76,6 +76,7 @@ const Home: React.FC = (props)=>{
                     gender
                     created
                     species
+                    status
 
                   }
                  
@@ -115,7 +116,7 @@ const Home: React.FC = (props)=>{
             name={item.name}
             origin={item.origin.name}
             created_at={item.created}
-            goToDetail={goToDetail}
+            goToDetail={()=>goToDetail(item)}
             
           />
             )}
