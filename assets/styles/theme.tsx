@@ -17,7 +17,7 @@ const theme = {
     bodyColor:"#E8E8E8",
     primaryColor:"#4A85AF",
     secondaryColor:"#0091FF",
-    SubtitleColor:"#A1A1A1",
+    SubtitleColor:"#A5A5A5",
     titleColor:"#303030",
     textTitleSize:15,
     textSubtitleSize:13,

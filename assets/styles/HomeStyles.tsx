@@ -10,7 +10,11 @@ Container:{
     flex:1,
     backgroundColor:theme.bodyColor,
     padding:spacingContainer,
+    paddingBottom:0
 
+},
+SeparatorList:{
+    height:20
 }
 
 
