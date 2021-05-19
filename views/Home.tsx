@@ -1,41 +1,120 @@
-import React from "react";
-import {View,FlatList} from "react-native";
+import React,{useState,useEffect} from "react";
+import {View,FlatList,ActivityIndicator} from "react-native";
 import HomeStyles from "../assets/styles/HomeStyles";
 import CardPerson from "../components/CardPerson";
 import {useNavigation} from "@react-navigation/native";
+import {client as ApolloClient} from "../utils/ApolloClient";
+import { gql } from '@apollo/client';
+import theme from "../assets/styles/theme";
+import {Person} from "../utils/interfaces/index";
 
 
 const ListSeparator = ()=>{
     return <View style={HomeStyles.SeparatorList}  >
 
-    </View>
+        </View>
 }
 
+const LoadingIndicator  = ({isLoading=false})=>{
+    if( isLoading  ){
+
+        return (
+            <View style={HomeStyles.ContentLoading} >
+                <ActivityIndicator size="large" color={theme.primaryColor}  />
+            </View>
+        )
+
+     }else{
+
+         return null;
+         
+     }
+}
 
 
 
 const Home: React.FC = (props)=>{
 
     let navigation = useNavigation();
-
+    let [dataSet,setDataSet] = useState( [] as Array<Person>   );
+    let [pageIndex,setPageIndex] = useState(1);
+    let [totalPages,setTotalPages] = useState(0);
+    let [loading,setLoading] = useState(false);
     
-    const goToDetail = ()=>{
-        navigation.navigate("detail");
+   
+
+   useEffect(() => {
+
+    GetPage();
+    
+   },[])
+
+   const goToDetail = (item:Person)=>{
+       
+    navigation.navigate("detail",item);
     }
+    const GetPage = ()=>{
+      
+        if( totalPages !== 0 && pageIndex > totalPages  ){
+            console.log("Query dead");
+            return 0;
+        }
+        setLoading(true);
+        ApolloClient.query({
+            query:gql`query {
+                characters(page: ${pageIndex}) {
+                  info {
+                    pages
+                  }
+                  results {
+                    id
+                    name
+                    image
+                    origin{
+                        name
+                    }
+                    gender
+                    created
+                    species
+
+                  }
+                 
+                }
+               
+              }`
+        }).then(result=>{
+
+            let rows = result.data.characters.results;
+            let pages = result.data.characters.info.pages;
+            setDataSet([...dataSet].concat(rows) );
+            setTotalPages(pages);
+            setPageIndex(pageIndex+1);
+
+
+
+        }).catch(e=>console.log(e.message)).finally(()=>{
+            setLoading(false);
+        });
+    }
+
+
 
     return (
     <View style={HomeStyles.Container}  >
 
          <FlatList 
         /*  ItemSeparatorComponent={ListSeparator} */
-         data={Array.from({length:10}).map((ele,index)=>index) }
-         keyExtractor={ele=>ele.toString()}
-         renderItem={ (ele=>
+         data={dataSet }
+         keyExtractor={ele=>ele.id.toString()}
+         onEndReached={GetPage}
+         onEndReachedThreshold={0.5}
+         ListFooterComponent={()=><LoadingIndicator isLoading={loading} />}
+         renderItem={ ( ({item,index})  =>
             <CardPerson 
-            image={"https://www.pngkit.com/png/detail/68-685736_pm-088-pocket-mortys-morty-png.png"}
-            name={"Nombre del personaje"}
-            origin={"Tierra"}
-            created_at={"2011-03-10"}
+            image={item.image }
+            name={item.name}
+            origin={item.origin.name}
+            created_at={item.created}
             goToDetail={goToDetail}
             
           />

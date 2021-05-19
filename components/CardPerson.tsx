@@ -22,7 +22,7 @@ const CardPerson: React.FC<CardPersonProps> = (props) => {
                 <Text style={CardPersonStyles.CardTitle} >{props.name}  </Text>
             </View>
             
-            <View>
+            <View style={CardPersonStyles.ImageContainer}  >
                 <Image source={{ uri: props.image }} style={CardPersonStyles.CardImage} />
             </View>
 

@@ -30,6 +30,10 @@ CardTitle:{
     fontWeight:"bold",
     textTransform:"capitalize"
 },
+ImageContainer:{
+marginBottom:15,
+marginTop:15
+},
 CardImage:{
     resizeMode:"contain",
     width:InternalWidth,

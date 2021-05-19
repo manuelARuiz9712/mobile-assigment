@@ -11,11 +11,15 @@ Container:{
     backgroundColor:theme.bodyColor,
     paddingLeft:spacingContainer,
     paddingRight:spacingContainer,
-    minHeight:ScreenSize.h
+  
 
 },
 SeparatorList:{
     height:20
+},
+ContentLoading:{
+    paddingBottom:10,
+    paddingTop:10
 }
 
 

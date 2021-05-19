@@ -1,11 +1,14 @@
 import React from "react";
 import {View,Text,Image} from "react-native";
 import DetailPersonStyles from "../assets/styles/DetailStyles";
-
+import {Person} from "../utils/interfaces/index";
+import {useRoute} from "@react-navigation/native";
 
 
 const DetailPerson: React.FC = (props)=>{
 
+    let router = useRoute();
+     let PersonData = router.params as Person;
 
 
     return (
@@ -15,7 +18,7 @@ const DetailPerson: React.FC = (props)=>{
 
                 <View style={DetailPersonStyles.ImageContainer} >
 
-                    <Image style={DetailPersonStyles.ImageCard} source={{ uri: 'https://www.pngkit.com/png/detail/68-685736_pm-088-pocket-mortys-morty-png.png' }} />
+                    <Image style={DetailPersonStyles.ImageCard} source={{ uri: PersonData.image }} />
 
                 </View>
 
