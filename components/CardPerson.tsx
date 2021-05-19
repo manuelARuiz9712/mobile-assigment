@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image,TouchableOpacity } from "react-native";
 import CardPersonStyles from "../assets/styles/CardPersonStyles";
 
 
@@ -7,7 +7,8 @@ type CardPersonProps = {
     name: string,
     image: any,
     origin: string,
-    created_at: string
+    created_at: string,
+    goToDetail:any
 }
 
 
@@ -15,7 +16,7 @@ const CardPerson: React.FC<CardPersonProps> = (props) => {
 
 
     return (
-        <View style={CardPersonStyles.CardContainer}  >
+        <TouchableOpacity onPress={ props.goToDetail}  style={CardPersonStyles.CardContainer}  >
 
             <View style={CardPersonStyles.CardTitleContainer} >
                 <Text style={CardPersonStyles.CardTitle} >{props.name}  </Text>
@@ -47,7 +48,7 @@ const CardPerson: React.FC<CardPersonProps> = (props) => {
 
             </View>
 
-        </View>
+        </TouchableOpacity>
     )
 
 

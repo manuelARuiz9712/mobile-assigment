@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet} from "react-native";
 import theme,{CalcPercent,ScreenSize} from "./theme";
 
-const baseWidth = CalcPercent(ScreenSize.w,100-16);
+const baseWidth = CalcPercent(ScreenSize.w,100-12);
 const paddingEx = 15;
 const InternalWidth = baseWidth - paddingEx*2;
 
@@ -14,7 +14,8 @@ CardContainer:{
     backgroundColor:"white",
     padding:paddingEx,
     flexDirection:"column",
-    borderRadius:10
+    borderRadius:10,
+    marginTop:20
     
 
 },

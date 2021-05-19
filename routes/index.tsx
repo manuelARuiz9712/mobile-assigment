@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {GlobalStyles} from "../assets/styles/theme";
 
 import HomeView from "../views/Home";
+import DetailView from "../views/Detail";
 
 
 
@@ -22,6 +23,7 @@ const NavigationMap: React.FC =()=>(
     initialRouteName='home' >
 
         <HomeStack.Screen name='home'  component={HomeView} />
+        <HomeStack.Screen name='detail'  component={DetailView} />
 
     </HomeStack.Navigator>
 
